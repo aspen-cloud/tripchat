@@ -441,22 +441,22 @@
   resolved "https://registry.yarnpkg.com/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
-"@triplit/client@^0.0.20", "@triplit/client@workspace:^":
-  version "0.0.20"
-  resolved "https://registry.yarnpkg.com/@triplit/client/-/client-0.0.20.tgz#f1bf43500771590ea653f7d0883dc9528ebc80a1"
-  integrity sha512-420X4hRDGnN6az5XgnLiDOFghzG2s/EjNY9haBcw85tVjxjmhGUmRg9bntq8pCoWhvd2d79ALXVsOeqdeQdsMg==
+"@triplit/client@^0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@triplit/client/-/client-0.0.27.tgz#ccb75bf44daa2dd7d84f2de332aaa621773088e4"
+  integrity sha512-Wg6egdKsobP6KbYqQQAjDMNby4NFZ2YnK7BCCyTKkKghXAdAUo2t4wT61OGmr0TMm5RPzpFoBoG7E5QCkSDtrA==
   dependencies:
     "@sinclair/typebox" "^0.27.4"
     node-fetch "^3.3.1"
     tuple-database "^2.2.0"
     yargs "^17.7.2"
 
-"@triplit/react@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@triplit/react/-/react-0.0.16.tgz#4f70cd712bf262a3e9f055679c0304bc64b8da02"
-  integrity sha512-h18MNSqQex5dZLYJc7kKXhOot6PZYc1x4WkDBBZ3AornekfWQSD3ZnkdwZnIi/NDl+Q7kGE+1uqwyI07UjOi6g==
+"@triplit/react@^0.0.27":
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/@triplit/react/-/react-0.0.27.tgz#08715df06f4760a48dadeefce37a14f237b94c8c"
+  integrity sha512-+X1WRMjkWmgUTjNd2tjCkpClBnWAbgZzl7LRA4aub0Bf0AQpsfNzXbfDBUJR+GiduqZ2K6ueAHqZy+ceFdMl2A==
   dependencies:
-    "@triplit/client" "workspace:^"
+    "@triplit/client" "^0.0.27"
 
 "@types/json-schema@^7.0.9":
   version "7.0.12"
@@ -1486,6 +1486,11 @@ nanoid@^3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
+
+nanoid@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.2.tgz#140b3c5003959adbebf521c170f282c5e7f9fb9e"
+  integrity sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==
 
 natural-compare-lite@^1.4.0:
   version "1.4.0"

@@ -10,8 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@triplit/client": "^0.0.20",
-    "@triplit/react": "^0.0.16",
+    "@triplit/client": "^0.0.27",
+    "@triplit/react": "^0.0.27",
+    "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

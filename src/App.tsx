@@ -1,82 +1,160 @@
-import { useState } from "react";
+import { useMemo, useState, useRef, useCallback } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-type Message = {
-  id: number;
-  text: string;
-  user: string;
-};
+import { IndexedDbStorage, TriplitClient } from "@triplit/client";
+import { useQuery } from "@triplit/react";
+import { nanoid } from "nanoid";
 
-const initialMessages: Message[] = [
-  { id: 1, text: "Hello!", user: "User1" },
-  { id: 2, text: "Hi!", user: "User2" },
-];
+const client = new TriplitClient({
+  sync: {
+    server: import.meta.env.VITE_TRIPLIT_SERVER,
+    apiKey: import.meta.env.VITE_TRIPLIT_API_KEY,
+  },
+});
+window.client = client;
+
+const chatsQuery = client.query("chats");
+
+function getUserId() {
+  let userId = localStorage.getItem("userId");
+  if (!userId) {
+    userId = nanoid();
+    localStorage.setItem("userId", userId);
+  }
+  return userId;
+}
+
+const userId = getUserId();
 
 function App() {
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
-  const [input, setInput] = useState("");
+  const [selectedChat, setSelectedChat] = useState<string | null>(null);
+
+  const { results: chats } = useQuery(client, chatsQuery);
 
   return (
     <div className="flex h-screen w-screen bg-gray-100">
       <div className="w-1/3 p-4 bg-white overflow-auto">
-        {/* This is where the chat list goes */}
         <h2 className="text-xl font-bold mb-4">Chats</h2>
-        <div className="p-2 bg-blue-100 rounded mb-2">Chat 1</div>
-        <div className="p-2 bg-blue-100 rounded mb-2">Chat 2</div>
-        {/* add more chats here */}
+        <button
+          onClick={async () => {
+            await client.insert("chats", { name: "New Chat" });
+          }}
+        >
+          New
+        </button>
+        {[...(chats?.entries() ?? [])].map(([id, chat]) => (
+          <div
+            key={id}
+            className={`p-2 rounded mb-2 ${
+              selectedChat === id ? "bg-blue-300" : "bg-blue-100"
+            }`}
+            onClick={() => {
+              setSelectedChat(id);
+            }}
+          >
+            {chat.name}
+          </div>
+        ))}
       </div>
       <div className="w-2/3 p-4">
-        {/* This is where the messages go */}
-        <div className="h-full flex flex-col justify-between">
-          <div className="overflow-auto">
-            {messages.map((message) => (
-              <div
-                key={message.id}
-                className={`rounded px-4 py-2 mb-2 ${
-                  message.user === "User1" ? "bg-blue-200" : "bg-green-200"
-                }`}
-              >
-                <p className="font-bold">{message.user}</p>
-                <p>{message.text}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex">
-            {/* This is the message input */}
-            <input
-              className="w-full rounded p-2 border"
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type your message here..."
-            />
-            <button
-              onClick={() => {
-                setMessages([
-                  ...messages,
-                  { id: messages.length + 1, text: input, user: "User1" },
-                ]);
-                setInput("");
-              }}
-            >
-              Send
-            </button>
-          </div>
-        </div>
+        {selectedChat ? <ChatArea chatId={selectedChat} /> : <EmptyMessage />}
       </div>
     </div>
   );
 }
 
-function ChatArea() {
+function EmptyMessage() {
   return (
     <div>
-      <div></div>
-      <div>
-        <input />
+      <p>Click on a chat to start messaging!</p>
+    </div>
+  );
+}
+
+const PAGE_SIZE = 20;
+
+function ChatArea({ chatId }: { chatId: string }) {
+  const [messageLimit, setMessageLimit] = useState(PAGE_SIZE);
+  const allMessagesQuery = useMemo(() => {
+    return client
+      .query("messages")
+      .where([["chatId", "=", chatId]])
+      .order(["createdAt", "DESC"])
+      .limit(messageLimit);
+  }, [chatId, messageLimit]);
+
+  const pendingMessagesQuery = useMemo(() => {
+    return client
+      .query("messages")
+      .where([["chatId", "=", chatId]])
+      .order(["createdAt", "DESC"])
+      .limit(messageLimit)
+      .syncStatus("pending");
+  }, [chatId, messageLimit]);
+
+  const { results: allMessages } = useQuery(client, allMessagesQuery);
+  const { results: pendingMessages } = useQuery(client, pendingMessagesQuery);
+
+  const [input, setInput] = useState("");
+  const scroll = useRef();
+  const messagesConainerRef = useRef();
+
+  const onScroll = useCallback(() => {
+    if (
+      messagesConainerRef.current &&
+      messagesConainerRef.current.scrollTop === 0
+    ) {
+      // TODO: cap message limit updates (if result set size is less than PAGE_SIZE * page)
+      setMessageLimit((prev) => prev + PAGE_SIZE);
+    }
+  }, []);
+
+  return (
+    <div className="h-full flex flex-col justify-between">
+      <div
+        className="overflow-auto"
+        onScroll={onScroll}
+        ref={messagesConainerRef}
+      >
+        {[...(allMessages?.entries() ?? [])].reverse().map(([id, message]) => (
+          <div
+            key={id}
+            className={`rounded px-4 py-2 mb-2 ${
+              message.user === userId ? "bg-blue-200" : "bg-green-200"
+            }`}
+          >
+            <p className="font-bold">{message.user}</p>
+            <p>{message.text}</p>
+            <p>{pendingMessages?.has(id) ? "unsent" : "sent"}</p>
+          </div>
+        ))}
+        <span ref={scroll}></span>
       </div>
+      <form
+        className="flex"
+        onSubmit={async (e) => {
+          e.preventDefault();
+          await client.insert("messages", {
+            chatId,
+            text: input,
+            user: userId,
+            createdAt: new Date().toISOString(),
+          });
+          setInput("");
+          scroll.current.scrollIntoView({ behavior: "smooth" });
+        }}
+      >
+        <input
+          className="w-full rounded p-2 border"
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type your message here..."
+        />
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 }
