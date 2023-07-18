@@ -45,22 +45,66 @@ function App() {
           New
         </button>
         {[...(chats?.entries() ?? [])].map(([id, chat]) => (
-          <div
+          <ChatListing
             key={id}
-            className={`p-2 rounded mb-2 ${
-              selectedChat === id ? "bg-blue-300" : "bg-blue-100"
-            }`}
-            onClick={() => {
-              setSelectedChat(id);
-            }}
-          >
-            {chat.name}
-          </div>
+            onSelect={() => setSelectedChat(id)}
+            chat={chat}
+            chatId={id}
+            isSelected={selectedChat === id}
+          />
         ))}
       </div>
       <div className="w-2/3 p-4">
         {selectedChat ? <ChatArea chatId={selectedChat} /> : <EmptyMessage />}
       </div>
+    </div>
+  );
+}
+
+function ChatListing({
+  isSelected,
+  chat,
+  chatId,
+  onSelect,
+}: {
+  isSelected: boolean;
+  chat: any;
+  chatId: string;
+  onSelect: () => void;
+}) {
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [draftName, setDraftName] = useState<string>(chat.name);
+  return (
+    <div className="flex mb-2">
+      {editMode ? (
+        <input
+          value={draftName}
+          onChange={(e) => setDraftName(e.target.value)}
+        />
+      ) : (
+        <div
+          className={`grow p-2 rounded  ${
+            isSelected ? "bg-blue-300" : "bg-blue-100"
+          }`}
+          onClick={onSelect}
+        >
+          {chat.name}
+        </div>
+      )}
+      {editMode ? (
+        <button
+          onClick={async () => {
+            await client.update("chats", chatId, async (mut) => {
+              await mut.attribute(["name"]).set(draftName);
+            });
+            setEditMode(false);
+          }}
+        >
+          Save
+        </button>
+      ) : (
+        <button onClick={() => setEditMode(true)}>Edit</button>
+      )}
     </div>
   );
 }
