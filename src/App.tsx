@@ -117,28 +117,28 @@ function EmptyMessage() {
   );
 }
 
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 10;
 
 function ChatArea({ chatId }: { chatId: string }) {
-  const [messageLimit, setMessageLimit] = useState(PAGE_SIZE);
+  // const [messageLimit, setMessageLimit] = useState(PAGE_SIZE);
   const allMessagesQuery = useMemo(() => {
     return client
       .query("messages")
       .where([["chatId", "=", chatId]])
       .order(["createdAt", "DESC"])
-      .limit(messageLimit);
-  }, [chatId, messageLimit]);
+      .limit(PAGE_SIZE);
+    // .after([10, "minutes"]);
+  }, [chatId]);
 
   const pendingMessagesQuery = useMemo(() => {
     return client
       .query("messages")
       .where([["chatId", "=", chatId]])
       .order(["createdAt", "DESC"])
-      .limit(messageLimit)
       .syncStatus("pending");
-  }, [chatId, messageLimit]);
+  }, [chatId]);
 
-  const { results: allMessages } = useQuery(client, allMessagesQuery);
+  const { results: allMessages, getNext } = useQuery(client, allMessagesQuery);
   const { results: pendingMessages } = useQuery(client, pendingMessagesQuery);
 
   const [input, setInput] = useState("");
@@ -151,9 +151,10 @@ function ChatArea({ chatId }: { chatId: string }) {
       messagesConainerRef.current.scrollTop === 0
     ) {
       // TODO: cap message limit updates (if result set size is less than PAGE_SIZE * page)
-      setMessageLimit((prev) => prev + PAGE_SIZE);
+      // setMessageLimit((prev) => prev + PAGE_SIZE);
+      getNext();
     }
-  }, []);
+  }, [getNext]);
 
   return (
     <div className="h-full flex flex-col justify-between">
