@@ -3,14 +3,20 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-import { IndexedDbStorage, TriplitClient } from "@triplit/client";
+import { MemoryStorage, TriplitClient } from "@triplit/client";
 import { useQuery } from "@triplit/react";
 import { nanoid } from "nanoid";
 
 const client = new TriplitClient({
   sync: {
     server: import.meta.env.VITE_TRIPLIT_SERVER,
-    apiKey: import.meta.env.VITE_TRIPLIT_API_KEY,
+    secure: false,
+  },
+  db: {
+    storage: { cache: new MemoryStorage(), outbox: new MemoryStorage() },
+  },
+  auth: {
+    token: import.meta.env.VITE_TRIPLIT_API_KEY,
   },
 });
 window.client = client;
@@ -31,7 +37,10 @@ const userId = getUserId();
 function App() {
   const [selectedChat, setSelectedChat] = useState<string | null>(null);
 
-  const { results: chats } = useQuery(client, chatsQuery);
+  const { results: chats, fetching, error } = useQuery(client, chatsQuery);
+
+  if (fetching) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div className="flex h-screen w-screen bg-gray-100">
@@ -94,8 +103,8 @@ function ChatListing({
       {editMode ? (
         <button
           onClick={async () => {
-            await client.update("chats", chatId, async (mut) => {
-              await mut.attribute(["name"]).set(draftName);
+            await client.update("chats", chatId, async (entity) => {
+              entity.name = draftName;
             });
             setEditMode(false);
           }}
@@ -187,7 +196,9 @@ function ChatArea({ chatId }: { chatId: string }) {
             createdAt: new Date().toISOString(),
           });
           setInput("");
-          scroll.current.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => {
+            scroll.current.scrollIntoView({ behavior: "smooth" });
+          }, 0);
         }}
       >
         <input
