@@ -1,6 +1,4 @@
 import { useMemo, useState, useRef, useCallback } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 import { MemoryStorage, TriplitClient } from "@triplit/client";
@@ -8,10 +6,10 @@ import { useQuery } from "@triplit/react";
 import { nanoid } from "nanoid";
 
 const client = new TriplitClient({
-  sync: {
-    server: import.meta.env.VITE_TRIPLIT_SERVER,
-    secure: false,
-  },
+  // sync: {
+  //   server: import.meta.env.VITE_TRIPLIT_SERVER,
+  //   secure: false,
+  // },
   db: {
     storage: { cache: new MemoryStorage(), outbox: new MemoryStorage() },
   },
@@ -19,6 +17,8 @@ const client = new TriplitClient({
     token: import.meta.env.VITE_TRIPLIT_API_KEY,
   },
 });
+client.syncEngine.disconnect();
+// @ts-ignore
 window.client = client;
 
 const chatsQuery = client.query("chats");
@@ -83,6 +83,20 @@ function ChatListing({
 }) {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [draftName, setDraftName] = useState<string>(chat.name);
+  const snippetQuery = useMemo(() => {
+    return client
+      .query("messages")
+      .where([["chatId", "=", chatId]])
+      .order(["createdAt", "DESC"])
+      .limit(1);
+  }, [chatId]);
+
+  const { fetching: fetchingSnippet, results: snippetResults } = useQuery(
+    client,
+    snippetQuery
+  );
+  const snippet =
+    [...(snippetResults?.entries() ?? [])][0]?.[1]?.text ?? "No messages";
   return (
     <div className="flex mb-2">
       {editMode ? (
@@ -97,7 +111,7 @@ function ChatListing({
           }`}
           onClick={onSelect}
         >
-          {chat.name}
+          {chat.name} - {fetchingSnippet ? "..." : snippet}
         </div>
       )}
       {editMode ? (
@@ -151,8 +165,8 @@ function ChatArea({ chatId }: { chatId: string }) {
   const { results: pendingMessages } = useQuery(client, pendingMessagesQuery);
 
   const [input, setInput] = useState("");
-  const scroll = useRef();
-  const messagesConainerRef = useRef();
+  const scroll = useRef<HTMLSpanElement>();
+  const messagesConainerRef = useRef<HTMLDivElement>();
 
   const onScroll = useCallback(() => {
     if (
@@ -197,7 +211,7 @@ function ChatArea({ chatId }: { chatId: string }) {
           });
           setInput("");
           setTimeout(() => {
-            scroll.current.scrollIntoView({ behavior: "smooth" });
+            scroll.current?.scrollIntoView({ behavior: "smooth" });
           }, 0);
         }}
       >
