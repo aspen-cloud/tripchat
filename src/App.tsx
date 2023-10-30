@@ -1,23 +1,41 @@
 import { useMemo, useState, useRef, useCallback } from "react";
 import "./App.css";
-
-import { MemoryStorage, TriplitClient } from "@triplit/client";
+import { Schema as S } from "@triplit/db";
+import { TriplitClient } from "@triplit/client";
 import { useQuery } from "@triplit/react";
 import { nanoid } from "nanoid";
 
 const client = new TriplitClient({
-  // sync: {
-  //   server: import.meta.env.VITE_TRIPLIT_SERVER,
-  //   secure: false,
-  // },
   db: {
-    storage: { cache: new MemoryStorage(), outbox: new MemoryStorage() },
+    schema: {
+      collections: {
+        chats: {
+          schema: S.Schema({
+            id: S.Id(),
+            name: S.String(),
+          }),
+        },
+        messages: {
+          schema: S.Schema({
+            id: S.Id(),
+            chatId: S.String(),
+            user: S.String(),
+            text: S.String(),
+            createdAt: S.Date({ default: S.Default.now() }),
+          }),
+        },
+      },
+    },
+  },
+  sync: {
+    server: import.meta.env.VITE_TRIPLIT_SERVER,
+    secure: true,
   },
   auth: {
     token: import.meta.env.VITE_TRIPLIT_API_KEY,
   },
 });
-client.syncEngine.disconnect();
+
 // @ts-ignore
 window.client = client;
 
@@ -207,7 +225,6 @@ function ChatArea({ chatId }: { chatId: string }) {
             chatId,
             text: input,
             user: userId,
-            createdAt: new Date().toISOString(),
           });
           setInput("");
           setTimeout(() => {
