@@ -29,7 +29,7 @@ const client = new TriplitClient({
   },
   sync: {
     server: import.meta.env.VITE_TRIPLIT_SERVER,
-    secure: true,
+    secure: false, // set to true if using production server
   },
   auth: {
     token: import.meta.env.VITE_TRIPLIT_API_KEY,

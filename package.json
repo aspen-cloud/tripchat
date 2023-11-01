@@ -10,14 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@triplit/client": "^0.0.38-beta.11",
-    "@triplit/react": "^0.0.38-beta.11",
+    "@triplit/client": "^0.1.0",
+    "@triplit/react": "^0.1.0",
     "nanoid": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@triplit/cli": "^0.0.38-beta.11",
+    "@triplit/cli": "^0.1.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.61.0",

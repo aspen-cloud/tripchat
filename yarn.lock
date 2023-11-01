@@ -1240,15 +1240,15 @@
   resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.10.7.tgz#577e8a635048875de4c9d6d6a3c21d26ff9f9d08"
   integrity sha512-KQk5OMg5OH6rmbHZxuNROvdI+hKDIUxANaHlV+dPlNN7ED3qYQ/WkpY2qlXww1SIdeMlkIhpN/2L00rof0fXFw==
 
-"@triplit/cli@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/cli/-/cli-0.0.38-beta.11.tgz#6781eb2a5836cd83f098f642db5790b766350a3f"
-  integrity sha512-W1ORt966+z2OWCBpshLgEwggL0/hAqHU2qxrdVDCTY5+KK8ykQTg98uwAc9pR/BEktY+PVP+eJ6qkrxLjCJjTA==
+"@triplit/cli@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/cli/-/cli-0.1.0.tgz#4686809f5dc574785fea5e96ca08b6cd15dbbfac"
+  integrity sha512-ByvREUcTCm++xj0sod4hkVZuU3SMKQirBzB6m/qkdri42gLy9JN8Gcu0EU5z3SFmzv+O7UFvH+78Bo0+DZIa4w==
   dependencies:
-    "@triplit/client" "^0.0.38-beta.11"
-    "@triplit/console" "^0.0.38-beta.11"
-    "@triplit/db" "^0.0.38-beta.11"
-    "@triplit/server" "^0.0.38-beta.11"
+    "@triplit/client" "^0.1.0"
+    "@triplit/console" "^0.1.0"
+    "@triplit/db" "^0.1.0"
+    "@triplit/server" "^0.1.0"
     ansis "^1.5.5"
     axios "^1.5.0"
     better-sqlite3 "^8.6.0"
@@ -1261,20 +1261,21 @@
     prettier "^3.0.3"
     prompts "^2.4.2"
     react "^18.2.0"
+    typescript "^5.2.2"
     ws "^8.14.1"
 
-"@triplit/client@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/client/-/client-0.0.38-beta.11.tgz#a3f6992518d3139d7a6f11a82e0c1c1308909ef9"
-  integrity sha512-SW1tbCIzbbKBvPBeClfj/q8506D8YU7CoE9oiSzslyX+BliekZN5gD9Fej0uunBJoBJZJb76DrDfrEbi22ABtw==
+"@triplit/client@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/client/-/client-0.1.0.tgz#6367ab08f00df7c9e1ed188bc459031e77d92557"
+  integrity sha512-ngIHxjbfRLHH8Tss30X/CQ8ywfsVNn2Zu15S8GaUgzezSC7gjZBuN0Jjn7qV09trXPOHl9JITtb97hD0Ts2A9w==
   dependencies:
-    "@triplit/db" "^0.0.38-beta.11"
+    "@triplit/db" "^0.1.0"
     rxjs "^7.8.1"
 
-"@triplit/console@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/console/-/console-0.0.38-beta.11.tgz#201d10b652b5f00a0d0de8f2a099291148ec6948"
-  integrity sha512-zOBmJ4vtNceWtlh4YF3xdkSYfQ9kIPsZ7C5Grf6fy0S7+jmLFJYc+yWikkl3bPs7fAkGJkTm9A259szS1vZ6mw==
+"@triplit/console@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/console/-/console-0.1.0.tgz#50a52ce41a8a4095531aedcb2a0a15adb5edc5b0"
+  integrity sha512-FtDxdAluYzPzmSDclKtq7m9bHxLgiGnrvn50U3hy/a10Q3rEWW/7TgeF2BPiwedOt7QCLqbFX6h1Js3MPanhBg==
   dependencies:
     "@ahooksjs/use-url-state" "^3.5.1"
     "@emotion/react" "^11.11.1"
@@ -1292,10 +1293,10 @@
     "@radix-ui/react-slot" "^1.0.2"
     "@radix-ui/react-tooltip" "^1.0.7"
     "@tanstack/react-table" "^8.9.8"
-    "@triplit/client" "^0.0.38-beta.11"
-    "@triplit/db" "^0.0.38-beta.11"
-    "@triplit/react" "^0.0.38-beta.11"
-    "@triplit/server-core" "^0.0.38-beta.11"
+    "@triplit/client" "^0.1.0"
+    "@triplit/db" "^0.1.0"
+    "@triplit/react" "^0.1.0"
+    "@triplit/server-core" "^0.1.0"
     class-variance-authority "^0.7.0"
     clsx "^2.0.0"
     cmdk "^0.2.0"
@@ -1315,10 +1316,10 @@
     tailwind-merge "^1.14.0"
     tailwindcss-animate "^1.0.7"
 
-"@triplit/db@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/db/-/db-0.0.38-beta.11.tgz#4b106e0ca7bbb6d1b2c72f6029d4e49f2cffc4a3"
-  integrity sha512-Y5wl8zFkUtsA9AXhuEockg6rRVMOnsImHDMzyKvBa98XZsnvwzqNMeN4+iuHiLpqACieDfPRHZEwOyjb0iA2/g==
+"@triplit/db@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/db/-/db-0.1.0.tgz#c0ea24c652e907838602ddc65f235ee2234d60f9"
+  integrity sha512-XHtgAnfwbqY7/LmJbTzoTSdMnmWZnmAzH1S/MbV23OSqz0Xc+V8ZuMSRRE/JKtnN+dryFouECOLSiXLvZ5aT/Q==
   dependencies:
     "@sinclair/typebox" "^0.27.4"
     ajv-formats "^2.1.1"
@@ -1328,28 +1329,28 @@
     tinybench "^2.5.0"
     tuple-database "^2.2.0"
 
-"@triplit/react@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/react/-/react-0.0.38-beta.11.tgz#5d707a085f5e3faeb7e268685454a7193aab7966"
-  integrity sha512-2F74ud2ormY4Q7bFMtKvWggJrAnj+rszQ7F0UNQgALfGndanZ1+CGKvp6aw4Ne4BC0rhXXim3gnU868VpFGAxg==
+"@triplit/react@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/react/-/react-0.1.0.tgz#a6c595a7a3ce54d42b913993fc774fb837746dec"
+  integrity sha512-ONFok/v/yooJ7rjFxGF/fwLj9O3jNXBwm6g7I1bXfOPZcvvLEnGrJDi8Qv90eZFKBHcq4N5YD2s/Ix4hstAoNQ==
   dependencies:
-    "@triplit/client" "^0.0.38-beta.11"
+    "@triplit/client" "^0.1.0"
 
-"@triplit/server-core@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/server-core/-/server-core-0.0.38-beta.11.tgz#67948f2c042801f679a931555d38ffd6639e7ff6"
-  integrity sha512-rhUI22HezzFJ/Pl1R0F/vzWLmDW/g9zcE3x998BROsVFMLhXPVen6HZSy6hNhiLH2P1407z+jRwhEPI1MwzQJQ==
+"@triplit/server-core@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/server-core/-/server-core-0.1.0.tgz#e631530160ef95989499febda20252cf5d4c5d98"
+  integrity sha512-Cx2kASy9aUSy7VNQtNd78Cbnt2uEzwc1efGreahmKvj/NNMakolgKin4CwFHSpD3pmHSlOYY+5i6H4BT5MdMIw==
   dependencies:
-    "@triplit/db" "^0.0.38-beta.11"
+    "@triplit/db" "^0.1.0"
     jose "^4.15.4"
 
-"@triplit/server@^0.0.38-beta.11":
-  version "0.0.38-beta.11"
-  resolved "https://registry.yarnpkg.com/@triplit/server/-/server-0.0.38-beta.11.tgz#b15c7ed67cb3405e2796b39eb22119fb890412c9"
-  integrity sha512-HG4M12GeMWl+wAgU18wU+QMl2WC6UW4SbunnY19gOYDu+k3Cjz4AgGKmpVg2ziC1p/z2C4MOePntAOArBZv70g==
+"@triplit/server@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@triplit/server/-/server-0.1.0.tgz#d82ef49e0210a7d27b7702b82445f34d204e2d77"
+  integrity sha512-GQahZ6zRnHvk/Qdfj02JdFbjA7DgAZLe5olB/U8TBSTMsy07gEts0FlSAIch6ooTVem1XHU4DK1XDjk2zm1yIQ==
   dependencies:
-    "@triplit/db" "^0.0.38-beta.11"
-    "@triplit/server-core" "^0.0.38-beta.11"
+    "@triplit/db" "^0.1.0"
+    "@triplit/server-core" "^0.1.0"
     better-sqlite3 "^8.3.0"
     cors "^2.8.5"
     dotenv "^16.0.3"
@@ -4490,6 +4491,11 @@ typescript@^5.0.2:
   version "5.1.6"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.1.6.tgz#02f8ac202b6dad2c0dd5e0913745b47a37998274"
   integrity sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==
+
+typescript@^5.2.2:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
+  integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
 
 universalify@^2.0.0:
   version "2.0.0"
