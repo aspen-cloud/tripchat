@@ -1,39 +1,20 @@
 import { useMemo, useState, useRef, useCallback } from "react";
 import "./App.css";
-import { Schema as S } from "@triplit/db";
+import { IndexedDbStorage } from "@triplit/db/storage/indexed-db";
+
 import { TriplitClient } from "@triplit/client";
 import { useQuery } from "@triplit/react";
 import { nanoid } from "nanoid";
+import { schema } from "../triplit/schema";
 
 const client = new TriplitClient({
-  db: {
-    schema: {
-      collections: {
-        chats: {
-          schema: S.Schema({
-            id: S.Id(),
-            name: S.String(),
-          }),
-        },
-        messages: {
-          schema: S.Schema({
-            id: S.Id(),
-            chatId: S.String(),
-            user: S.String(),
-            text: S.String(),
-            createdAt: S.Date({ default: S.Default.now() }),
-          }),
-        },
-      },
-    },
+  storage: {
+    cache: new IndexedDbStorage("tripchat-cache"),
+    outbox: new IndexedDbStorage("tripchat-outbox"),
   },
-  sync: {
-    server: import.meta.env.VITE_TRIPLIT_SERVER,
-    secure: false, // set to true if using production server
-  },
-  auth: {
-    token: import.meta.env.VITE_TRIPLIT_API_KEY,
-  },
+  schema,
+  serverUrl: import.meta.env.VITE_TRIPLIT_SERVER,
+  token: import.meta.env.VITE_TRIPLIT_API_KEY,
 });
 
 // @ts-ignore

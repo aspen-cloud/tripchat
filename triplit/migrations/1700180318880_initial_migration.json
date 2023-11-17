@@ -1,0 +1,82 @@
+{
+  "up": [
+    [
+      "create_collection",
+      {
+        "name": "chats",
+        "schema": {
+          "id": {
+            "type": "string",
+            "options": {
+              "nullable": false,
+              "default": {
+                "func": "uuid",
+                "args": null
+              }
+            }
+          },
+          "name": {
+            "type": "string",
+            "options": {}
+          }
+        }
+      }
+    ],
+    [
+      "create_collection",
+      {
+        "name": "messages",
+        "schema": {
+          "id": {
+            "type": "string",
+            "options": {
+              "nullable": false,
+              "default": {
+                "func": "uuid",
+                "args": null
+              }
+            }
+          },
+          "chatId": {
+            "type": "string",
+            "options": {}
+          },
+          "user": {
+            "type": "string",
+            "options": {}
+          },
+          "text": {
+            "type": "string",
+            "options": {}
+          },
+          "createdAt": {
+            "type": "date",
+            "options": {
+              "default": {
+                "func": "now",
+                "args": null
+              }
+            }
+          }
+        }
+      }
+    ]
+  ],
+  "down": [
+    [
+      "drop_collection",
+      {
+        "name": "messages"
+      }
+    ],
+    [
+      "drop_collection",
+      {
+        "name": "chats"
+      }
+    ]
+  ],
+  "version": 1700180318880,
+  "parent": 0,
+  "name": "initial_migration"
+}

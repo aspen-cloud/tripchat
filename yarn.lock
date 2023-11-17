@@ -1240,15 +1240,15 @@
   resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.10.7.tgz#577e8a635048875de4c9d6d6a3c21d26ff9f9d08"
   integrity sha512-KQk5OMg5OH6rmbHZxuNROvdI+hKDIUxANaHlV+dPlNN7ED3qYQ/WkpY2qlXww1SIdeMlkIhpN/2L00rof0fXFw==
 
-"@triplit/cli@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/cli/-/cli-0.1.0.tgz#4686809f5dc574785fea5e96ca08b6cd15dbbfac"
-  integrity sha512-ByvREUcTCm++xj0sod4hkVZuU3SMKQirBzB6m/qkdri42gLy9JN8Gcu0EU5z3SFmzv+O7UFvH+78Bo0+DZIa4w==
+"@triplit/cli@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/cli/-/cli-0.2.1.tgz#8eef444d4676375861664c29b28217c0714934b8"
+  integrity sha512-beiolJPLCRwDt3DubI/jvhYfT7QlJTwBNuJR9S8iL84+H7AUyIZqxKyYKopcxg+zqvvMWoFcsGWJA1vZ8L0Nvw==
   dependencies:
-    "@triplit/client" "^0.1.0"
-    "@triplit/console" "^0.1.0"
-    "@triplit/db" "^0.1.0"
-    "@triplit/server" "^0.1.0"
+    "@triplit/client" "^0.2.1"
+    "@triplit/console" "^0.2.1"
+    "@triplit/db" "^0.2.1"
+    "@triplit/server" "^0.2.1"
     ansis "^1.5.5"
     axios "^1.5.0"
     better-sqlite3 "^8.6.0"
@@ -1264,18 +1264,18 @@
     typescript "^5.2.2"
     ws "^8.14.1"
 
-"@triplit/client@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/client/-/client-0.1.0.tgz#6367ab08f00df7c9e1ed188bc459031e77d92557"
-  integrity sha512-ngIHxjbfRLHH8Tss30X/CQ8ywfsVNn2Zu15S8GaUgzezSC7gjZBuN0Jjn7qV09trXPOHl9JITtb97hD0Ts2A9w==
+"@triplit/client@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/client/-/client-0.2.1.tgz#e8b63255f2bd10d14de5ac4c8be8c0a2a96b081f"
+  integrity sha512-PAU1hH+FU+Et8XLW6lPdOT8CkSXY+DIV6pgC4ybzATbc3m8JBnbmsKmbziqZg+9vBehIApU59Aa/CA8xaGB/2w==
   dependencies:
-    "@triplit/db" "^0.1.0"
+    "@triplit/db" "^0.2.1"
     rxjs "^7.8.1"
 
-"@triplit/console@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/console/-/console-0.1.0.tgz#50a52ce41a8a4095531aedcb2a0a15adb5edc5b0"
-  integrity sha512-FtDxdAluYzPzmSDclKtq7m9bHxLgiGnrvn50U3hy/a10Q3rEWW/7TgeF2BPiwedOt7QCLqbFX6h1Js3MPanhBg==
+"@triplit/console@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/console/-/console-0.2.1.tgz#ef8601c1a96dd36fd40b5285c85db87b8b1e8f44"
+  integrity sha512-3PYS6LuNG1O5OVFnMSo4l/oqhGjJDZX7keLSLz0C4cOgM/ZAx1yM5ckb+QlPjgUvzmiELMKVdP+TpjQ/+m8t9Q==
   dependencies:
     "@ahooksjs/use-url-state" "^3.5.1"
     "@emotion/react" "^11.11.1"
@@ -1293,10 +1293,10 @@
     "@radix-ui/react-slot" "^1.0.2"
     "@radix-ui/react-tooltip" "^1.0.7"
     "@tanstack/react-table" "^8.9.8"
-    "@triplit/client" "^0.1.0"
-    "@triplit/db" "^0.1.0"
-    "@triplit/react" "^0.1.0"
-    "@triplit/server-core" "^0.1.0"
+    "@triplit/client" "^0.2.1"
+    "@triplit/db" "^0.2.1"
+    "@triplit/react" "^0.2.1"
+    "@triplit/server-core" "^0.2.1"
     class-variance-authority "^0.7.0"
     clsx "^2.0.0"
     cmdk "^0.2.0"
@@ -1316,41 +1316,42 @@
     tailwind-merge "^1.14.0"
     tailwindcss-animate "^1.0.7"
 
-"@triplit/db@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/db/-/db-0.1.0.tgz#c0ea24c652e907838602ddc65f235ee2234d60f9"
-  integrity sha512-XHtgAnfwbqY7/LmJbTzoTSdMnmWZnmAzH1S/MbV23OSqz0Xc+V8ZuMSRRE/JKtnN+dryFouECOLSiXLvZ5aT/Q==
+"@triplit/db@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/db/-/db-0.2.1.tgz#89bb6094f90ad17f5c9316fd978f87a2a964f977"
+  integrity sha512-8IzeWdh8gnUSVqLvyq0gJ+bEkZMMWfHmXGWoavYGngE4xr3Bx5GRz3Hl1J+Cd7g7kxho3VMmlYWEtVjbj+llZA==
   dependencies:
     "@sinclair/typebox" "^0.27.4"
     ajv-formats "^2.1.1"
+    idb "^7.1.1"
     nanoid "^3.0.0"
     pino "^8.11.0"
     sorted-btree "^1.8.1"
     tinybench "^2.5.0"
     tuple-database "^2.2.0"
 
-"@triplit/react@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/react/-/react-0.1.0.tgz#a6c595a7a3ce54d42b913993fc774fb837746dec"
-  integrity sha512-ONFok/v/yooJ7rjFxGF/fwLj9O3jNXBwm6g7I1bXfOPZcvvLEnGrJDi8Qv90eZFKBHcq4N5YD2s/Ix4hstAoNQ==
+"@triplit/react@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/react/-/react-0.2.1.tgz#e9859afe0bc813495509dd1d1689e05ebef3a805"
+  integrity sha512-MaSx+H/hpUHf4Diidtt5FmTPwHc6aeY4pDnKkwdQU1Pe1jz+h9FS2EiggjUlNcAmqHaxcDFLGFBPjgL+n8PNTg==
   dependencies:
-    "@triplit/client" "^0.1.0"
+    "@triplit/client" "^0.2.1"
 
-"@triplit/server-core@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/server-core/-/server-core-0.1.0.tgz#e631530160ef95989499febda20252cf5d4c5d98"
-  integrity sha512-Cx2kASy9aUSy7VNQtNd78Cbnt2uEzwc1efGreahmKvj/NNMakolgKin4CwFHSpD3pmHSlOYY+5i6H4BT5MdMIw==
+"@triplit/server-core@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/server-core/-/server-core-0.2.1.tgz#549e504cc1b2fbd08be61b5527eb60f3e68dcac5"
+  integrity sha512-7WbWODMZD2FiIQou6ph6i4IEpLRKaRJJ8LvYo7wjnQ8jI0MhLkxhamkWMVEXvMFlcVt0iFIp7kQ/E25zn8VH5A==
   dependencies:
-    "@triplit/db" "^0.1.0"
+    "@triplit/db" "^0.2.1"
     jose "^4.15.4"
 
-"@triplit/server@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@triplit/server/-/server-0.1.0.tgz#d82ef49e0210a7d27b7702b82445f34d204e2d77"
-  integrity sha512-GQahZ6zRnHvk/Qdfj02JdFbjA7DgAZLe5olB/U8TBSTMsy07gEts0FlSAIch6ooTVem1XHU4DK1XDjk2zm1yIQ==
+"@triplit/server@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@triplit/server/-/server-0.2.1.tgz#c801a0177e9d6d7479704503fb4260947cb400d2"
+  integrity sha512-h4ud+oi7FnRKR96SsubMVQtK++STmR5riTZu+9/zQzaVkhMKW5KlDzSfYjf6sgD2KTJcwtPzCyBCciCoKiYDQw==
   dependencies:
-    "@triplit/db" "^0.1.0"
-    "@triplit/server-core" "^0.1.0"
+    "@triplit/db" "^0.2.1"
+    "@triplit/server-core" "^0.2.1"
     better-sqlite3 "^8.3.0"
     cors "^2.8.5"
     dotenv "^16.0.3"
@@ -2816,6 +2817,11 @@ iconv-lite@0.4.24:
   integrity sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
+
+idb@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/idb/-/idb-7.1.1.tgz#d910ded866d32c7ced9befc5bfdf36f572ced72b"
+  integrity sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==
 
 ieee754@^1.1.13, ieee754@^1.2.1:
   version "1.2.1"
